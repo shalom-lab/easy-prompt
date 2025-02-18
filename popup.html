@@ -15,14 +15,19 @@
       width: 300px;
       color: #333;
     }
+    .header-container {
+      margin-bottom: 5px;
+      text-align: center;
+      padding: 0 10px;  /* Add some padding */
+      border-bottom: 2px solid #eaecef;
+    }
 
     h1 {
-      font-size: 1.6em;
+      font-size: 2em;
       text-align: center;
       color: #4a90e2;
-      margin-bottom: 15px;
-      border-bottom: 2px solid #eaecef;
-      padding-bottom: 10px;
+      margin: 0 0 8px 0;  /* Add bottom margin */
+      padding-bottom: 8px;
     }
 
     textarea {
@@ -32,7 +37,7 @@
       font-size: 14px;
       border: 1px solid #ddd;
       border-radius: 5px;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
       background-color: #fff;
       transition: border-color 0.2s ease;
     }
@@ -176,7 +181,9 @@
 
     .import-export {
       display: flex;
-      gap: 10px;
+      justify-content: flex-end;  /* Align buttons to the right */
+      gap: 8px;
+      margin-bottom: 8px;  /* Add some space below the buttons */
     }
 
     @keyframes fadeIn {
@@ -322,23 +329,24 @@
 
     /* Secondary button style */
     .btn-secondary {
-      background-color: #f1f3f4;
-      color: #333;
-      border: 1px solid #ddd;
-      padding: 8px 16px;
-      font-size: 13px;
-      border-radius: 4px;
+      background-color: transparent;
+      color: #666;
+      border: none;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 3px;
       transition: all 0.2s ease;
     }
 
     .btn-secondary:hover {
-      background-color: #e8eaed;
-      border-color: #ccc;
+      background-color: #f1f3f4;
+      color: #333;
     }
 
     /* Adjust add button style */
     #add-btn {
-      min-width: 100px;
+      width: 100%;
+      min-width: 240px;
       padding: 8px 24px;
       background-color: #4a90e2;
       color: white;
@@ -372,7 +380,7 @@
     }
 
     .input-container {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     .input-container textarea {
@@ -384,19 +392,38 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
     }
 
     .import-export {
       display: flex;
-      gap: 8px;
+      justify-content: flex-end
+    }
+
+    .header-container {
+      margin-bottom: 5px;
+      text-align: center;
+    }
+    #new-prompt {
+      width: calc(100% - 20px);
+      margin-bottom: 0px;
+      resize: vertical;  /* Only allow vertical resizing */
+      min-height: 60px;  /* Set minimum height */
+      max-height: 200px;  /* Set maximum height */
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <h1>Prompt Saver</h1>
+    <div class="header-container">
+      <h1>Prompt Saver</h1>
+      <div class="import-export">
+        <input type="file" id="import-file" accept=".json" style="display: none;">
+        <button id="import-btn" class="btn-secondary">Import</button>
+        <button id="export-btn" class="btn-secondary">Export</button>
+      </div>
+    </div>
     
     <div class="input-container">
       <textarea id="new-prompt" placeholder="Enter your prompt here... (Ctrl+Enter to save, Ctrl+Shift+V to paste and save)"></textarea>
@@ -404,11 +431,6 @@
 
     <div class="button-group">
       <button id="add-btn">Add</button>
-      <div class="import-export">
-        <input type="file" id="import-file" accept=".json" style="display: none;">
-        <button id="import-btn" class="btn-secondary">Import</button>
-        <button id="export-btn" class="btn-secondary">Export</button>
-      </div>
     </div>
     
     <ul id="prompt-list"></ul>
