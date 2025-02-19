@@ -103,41 +103,80 @@ function addPromptToUI(prompt, index) {
 
 // Function to handle edit mode
 function startEditing(textSpan, editInput, prompt, index) {
-  const li = textSpan.closest('.prompt-item');
-  li.classList.add('editing');  // Add editing class
-  textSpan.style.display = 'none';
-  editInput.style.display = 'block';
-  editInput.value = prompt;
-  editInput.focus();
+  // 创建模态框
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  
+  const modalContent = document.createElement('div');
+  modalContent.className = 'modal-content';
+  
+  const modalHeader = document.createElement('div');
+  modalHeader.className = 'modal-header';
+  modalHeader.textContent = 'Edit Prompt';
+  
+  const modalBody = document.createElement('div');
+  modalBody.className = 'modal-body';
+  
+  // 创建新的文本框
+  const modalTextarea = document.createElement('textarea');
+  modalTextarea.className = 'modal-textarea';
+  modalTextarea.value = prompt;
+  
+  const modalFooter = document.createElement('div');
+  modalFooter.className = 'modal-footer';
+  
+  const saveButton = document.createElement('button');
+  saveButton.textContent = 'Save';
+  saveButton.className = 'modal-btn save';
+  
+  const cancelButton = document.createElement('button');
+  cancelButton.textContent = 'Cancel';
+  cancelButton.className = 'modal-btn cancel';
+  
+  modalBody.appendChild(modalTextarea);
+  modalFooter.appendChild(cancelButton);
+  modalFooter.appendChild(saveButton);
+  
+  modalContent.appendChild(modalHeader);
+  modalContent.appendChild(modalBody);
+  modalContent.appendChild(modalFooter);
+  modal.appendChild(modalContent);
+  
+  document.body.appendChild(modal);
+  modalTextarea.focus();
 
+  // 保存编辑
   function saveEdit() {
-    const newPrompt = editInput.value.trim();
+    const newPrompt = modalTextarea.value.trim();
     if (newPrompt && newPrompt !== prompt) {
       updatePrompt(index, newPrompt);
-    } else {
-      // If no changes, just revert back
-      textSpan.style.display = 'block';
-      editInput.style.display = 'none';
-      li.classList.remove('editing');  // Remove editing class
     }
+    document.body.removeChild(modal);
   }
 
-  // Save on enter
-  editInput.onkeydown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
+  // 取消编辑
+  function cancelEdit() {
+    document.body.removeChild(modal);
+  }
+
+  // 添加事件监听器
+  saveButton.onclick = saveEdit;
+  cancelButton.onclick = cancelEdit;
+  
+  // ESC 键关闭模态框
+  modalTextarea.onkeydown = (e) => {
+    if (e.key === 'Escape') {
+      cancelEdit();
+    } else if (e.key === 'Enter' && e.ctrlKey) {
       saveEdit();
-    } else if (e.key === 'Escape') {
-      // Cancel on escape
-      textSpan.style.display = 'block';
-      editInput.style.display = 'none';
-      li.classList.remove('editing');  // Remove editing class
     }
   };
 
-  // Save on blur
-  editInput.onblur = () => {
-    saveEdit();
+  // 点击模态框外部关闭
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      cancelEdit();
+    }
   };
 }
 
@@ -260,39 +299,47 @@ function importPrompts(file) {
 
 // Show custom delete confirmation dialog
 function showDeleteConfirm(index) {
-  const overlay = document.createElement('div');
-  overlay.className = 'overlay';
+  const modal = document.createElement('div');
+  modal.className = 'modal confirm-modal';
   
-  const dialog = document.createElement('div');
-  dialog.className = 'confirm-dialog';
+  const modalContent = document.createElement('div');
+  modalContent.className = 'modal-content';
   
-  const message = document.createElement('p');
-  message.textContent = 'Are you sure you want to delete this prompt?';
+  const modalBody = document.createElement('div');
+  modalBody.className = 'modal-body';
+  modalBody.textContent = 'Are you sure you want to delete this prompt?';
   
-  const buttonContainer = document.createElement('div');
-  buttonContainer.className = 'confirm-buttons';
+  const modalFooter = document.createElement('div');
+  modalFooter.className = 'modal-footer';
   
-  const cancelBtn = document.createElement('button');
-  cancelBtn.textContent = 'Cancel';
-  cancelBtn.className = 'confirm-btn cancel';
-  cancelBtn.onclick = () => {
-    document.body.removeChild(overlay);
+  const cancelButton = document.createElement('button');
+  cancelButton.textContent = 'Cancel';
+  cancelButton.onclick = () => {
+    document.body.removeChild(modal);
   };
   
-  const confirmBtn = document.createElement('button');
-  confirmBtn.textContent = 'Delete';
-  confirmBtn.className = 'confirm-btn delete';
-  confirmBtn.onclick = () => {
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.onclick = () => {
     deletePrompt(index);
-    document.body.removeChild(overlay);
+    document.body.removeChild(modal);
   };
   
-  buttonContainer.appendChild(cancelBtn);
-  buttonContainer.appendChild(confirmBtn);
-  dialog.appendChild(message);
-  dialog.appendChild(buttonContainer);
-  overlay.appendChild(dialog);
-  document.body.appendChild(overlay);
+  modalFooter.appendChild(cancelButton);
+  modalFooter.appendChild(deleteButton);
+  
+  modalContent.appendChild(modalBody);
+  modalContent.appendChild(modalFooter);
+  modal.appendChild(modalContent);
+  
+  document.body.appendChild(modal);
+
+  // 点击模态框外部关闭
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      document.body.removeChild(modal);
+    }
+  };
 }
 
 // Drag and drop handlers
