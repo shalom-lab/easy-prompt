@@ -2,15 +2,16 @@
   "manifest_version": 3,
   "name": "Prompt Saver",
   "version": "1.0",
-  "description": "Save, manage, and copy your favorite prompts quickly.",
+  "description": "Save and reuse your favorite prompts for ChatGPT, Claude, Gemini, DeepSeek and other AI chat assistants. Boost your AI conversation efficiency with quick prompt insertion.",
   "permissions": [
-    "storage",
-    "contextMenus",
-    "notifications",
-    "clipboardRead",
     "activeTab",
     "scripting",
-    "tabs"
+    "storage",
+    "contextMenus",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -20,18 +21,12 @@
       "128": "icon128.png"
     }
   },
-  "background": {
-    "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
   }
 }
