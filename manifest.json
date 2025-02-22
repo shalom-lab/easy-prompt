@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Save and reuse your awesome prompts for ChatGPT, Claude, Gemini, DeepSeek and other AI chat assistants. Boost your AI conversation efficiency with quick prompt insertion.",
   "author": "your_name",
-  "homepage_url": "https://github.com/yourusername/easy-prompt",
+  "homepage_url": "https://github.com/shalom-lab/easy-prompt",
   "permissions": [
     "activeTab",
     "scripting",
