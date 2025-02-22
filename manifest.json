@@ -1,14 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Prompt Saver",
+  "name": "Easy Prompt",
   "version": "1.0",
-  "description": "Save and reuse your favorite prompts for ChatGPT, Claude, Gemini, DeepSeek and other AI chat assistants. Boost your AI conversation efficiency with quick prompt insertion.",
+  "description": "Save and reuse your awesome prompts for ChatGPT, Claude, Gemini, DeepSeek and other AI chat assistants. Boost your AI conversation efficiency with quick prompt insertion.",
   "permissions": [
     "activeTab",
     "scripting",
     "storage",
     "contextMenus",
-    "notifications"
+    "notifications",
+    "clipboardRead"
   ],
   "host_permissions": [
     "<all_urls>"

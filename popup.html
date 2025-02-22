@@ -11,7 +11,10 @@
 <body>
   <div id="app">
     <div class="header-container">
-      <h1>Prompt Saver</h1>
+      <div class="title-row">
+        <h1>Easy Prompt</h1>
+        <a href="https://github.com/yourusername/easy-prompt" target="_blank" class="github-star">⭐</a>
+      </div>
       <div class="import-export">
         <input type="file" id="import-file" accept=".json" style="display: none;">
         <button id="import-btn" class="btn-secondary">Import</button>
@@ -20,7 +23,7 @@
     </div>
     
     <div class="input-container">
-      <textarea id="new-prompt" placeholder="Enter your prompt here... (Ctrl+Enter to save, Ctrl+Shift+V to paste and save)"></textarea>
+      <textarea id="new-prompt" placeholder="Enter your prompt here... (Ctrl+V to paste, Ctrl+Enter to save)"></textarea>
     </div>
 
     <div class="button-group">

@@ -42,7 +42,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
           chrome.notifications.create({
             type: 'basic',
             iconUrl: 'icon48.png',
-            title: 'Prompt Saver',
+            title: 'Easy Prompt',
             message: 'Text saved successfully!'
           });
         });
@@ -100,7 +100,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
                 chrome.notifications.create({
                   type: 'basic',
                   iconUrl: 'icon48.png',
-                  title: 'Prompt Saver',
+                  title: 'Easy Prompt',
                   message: 'Cannot insert text in this page'
                 });
               });
@@ -145,7 +145,7 @@ async function createContextMenus() {
     // Create save menu
     await createMenu({
       id: "savePrompt",
-      title: "Save to Prompt Saver",
+      title: "Save to Easy Prompt",
       contexts: ["selection"]
     });
 

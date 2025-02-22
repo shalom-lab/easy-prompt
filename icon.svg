@@ -1,0 +1,16 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆 -->
+  <circle cx="64" cy="64" r="64" fill="#4A90E2"/>
+  
+  <!-- 对话框形状 - 最大化 -->
+  <path d="M102 30H26C23.7909 30 22 31.7909 22 34V84C22 86.2091 23.7909 88 26 88H45L64 108L83 88H102C104.209 88 106 86.2091 106 84V34C106 31.7909 104.209 30 102 30Z" 
+        fill="white"/>
+  
+  <!-- AI 提示符号 - 两行等长，加宽 -->
+  <path d="M32 55H96" stroke="#4A90E2" stroke-width="6" stroke-linecap="round"/>
+  <path d="M32 75H96" stroke="#4A90E2" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- 中心对称的闪电图标 - 最大化 -->
+  <path d="M64 35L84 35L64 58L82 58L48 98L56 73L44 73L64 35Z" 
+        fill="#FFD700" stroke="#4A90E2" stroke-width="1.5"/>
+</svg> 

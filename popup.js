@@ -5,14 +5,7 @@ const promptList = document.getElementById('prompt-list');
 // Add keyboard shortcuts
 newPromptInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && e.ctrlKey) {
-    addButton.click();
-  }
-  if (e.key === 'v' && e.ctrlKey) {
-    e.preventDefault();
-    document.execCommand('paste');
-    if (e.shiftKey) { // Ctrl+Shift+V to paste and save directly
-      addButton.click();
-    }
+    addButton.click();  // 只在 Ctrl+Enter 时保存
   }
 });
 
@@ -29,19 +22,18 @@ function loadPrompts() {
 function addPromptToUI(prompt, index) {
   const li = document.createElement('li');
   li.className = 'prompt-item';
-  li.draggable = true; // Make item draggable
+  li.draggable = true;
+  li.setAttribute('data-index', index);
   
-  // Add drag and drop event listeners
+  // 添加拖拽事件监听器
   li.addEventListener('dragstart', handleDragStart);
   li.addEventListener('dragover', handleDragOver);
-  li.addEventListener('drop', handleDrop);
-  li.addEventListener('dragenter', handleDragEnter);
-  li.addEventListener('dragleave', handleDragLeave);
+  li.addEventListener('dragend', handleDragEnd);
 
   // Add drag handle
   const dragHandle = document.createElement('div');
   dragHandle.className = 'drag-handle';
-  dragHandle.innerHTML = '⋮⋮'; // Vertical dots as handle
+  dragHandle.innerHTML = '⋮⋮';  // 使用2组三点，形成6个点
 
   const textSpan = document.createElement('span');
   textSpan.textContent = prompt;
@@ -342,11 +334,13 @@ function showDeleteConfirm(index) {
   };
 }
 
-// Drag and drop handlers
-let draggedItem = null;
+// 拖拽相关变量
+let dragStartIndex;
+let dragOverItem;
 
+// 添加拖拽事件处理函数
 function handleDragStart(e) {
-  draggedItem = this;
+  dragStartIndex = parseInt(this.getAttribute('data-index'));
   this.classList.add('dragging');
   e.dataTransfer.effectAllowed = 'move';
 }
@@ -354,37 +348,49 @@ function handleDragStart(e) {
 function handleDragOver(e) {
   e.preventDefault();
   e.dataTransfer.dropEffect = 'move';
+  const item = e.target.closest('.prompt-item');
+  if (item && !item.classList.contains('dragging')) {
+    dragOverItem = item;
+    const items = [...promptList.querySelectorAll('.prompt-item:not(.dragging)')];
+    const draggedItem = promptList.querySelector('.dragging');
+    const draggedRect = draggedItem.getBoundingClientRect();
+    const mouseY = e.clientY;
+    
+    // 计算拖动项目应该放置的位置
+    const shouldGoAfter = items.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = mouseY - (box.top + box.height / 2);
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+    if (shouldGoAfter) {
+      shouldGoAfter.parentNode.insertBefore(draggedItem, shouldGoAfter);
+    } else {
+      promptList.appendChild(draggedItem);
+    }
+  }
 }
 
-function handleDragEnter(e) {
-  this.classList.add('drag-over');
-}
-
-function handleDragLeave(e) {
-  this.classList.remove('drag-over');
-}
-
-function handleDrop(e) {
+function handleDragEnd(e) {
   e.preventDefault();
-  this.classList.remove('drag-over');
+  this.classList.remove('dragging');
   
-  if (this === draggedItem) return;
-
-  // Get all items
+  // 获取新的顺序并更新存储
   const items = [...promptList.querySelectorAll('.prompt-item')];
-  const fromIndex = items.indexOf(draggedItem);
-  const toIndex = items.indexOf(this);
-
-  // Update storage with new order
   chrome.storage.local.get(['prompts'], (result) => {
     const prompts = result.prompts || [];
-    const [movedItem] = prompts.splice(fromIndex, 1);
-    prompts.splice(toIndex, 0, movedItem);
-    chrome.storage.local.set({ prompts }, loadPrompts);
+    const newPrompts = items.map(item => {
+      const index = parseInt(item.getAttribute('data-index'));
+      return prompts[index];
+    });
+    chrome.storage.local.set({ prompts: newPrompts }, () => {
+      loadPrompts(); // 重新加载列表以更新索引
+    });
   });
-
-  draggedItem.classList.remove('dragging');
-  draggedItem = null;
 }
 
 // Initialize

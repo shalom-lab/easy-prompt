@@ -4,28 +4,30 @@ body {
   background-color: #f9fafb;
   margin: 0;
   padding: 10px;
-  width: 300px;
+  width: 360px;
   color: #333;
+  box-sizing: border-box;
 }
 
 .header-container {
   margin-bottom: 5px;
   text-align: center;
-  padding: 0 10px;
+  padding: 10px 0;
   border-bottom: 2px solid #eaecef;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 h1 {
   font-size: 2em;
-  text-align: center;
   color: #4a90e2;
-  margin: 0 0 8px 0;
-  padding-bottom: 8px;
+  margin: 0;
+  padding: 0;
 }
 
 /* 输入区域样式 */
 textarea {
-  width: 100%;
+  width: calc(100% - 22px);
   height: 60px;
   padding: 10px;
   font-size: 14px;
@@ -34,6 +36,12 @@ textarea {
   margin-bottom: 0px;
   background-color: #fff;
   transition: border-color 0.2s ease;
+  resize: vertical;
+  max-width: calc(100% - 22px);
+  min-height: 60px;
+  max-height: 200px;
+  scrollbar-width: thin;  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
 }
 
 textarea:focus {
@@ -68,34 +76,52 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f5f5f5;
 }
 
 .prompt-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 8px 10px;
   margin-bottom: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
   transition: box-shadow 0.2s ease;
-  height: 44px;
+  height: 40px;
   box-sizing: border-box;
+  max-width: 100%;
+  cursor: move;
+  gap: 4px;
 }
 
 .prompt-item:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* 拖动时的光标样式 - 可以移除，因为 move 光标不需要活动状态 */
+.prompt-item:active {
+  cursor: move;  /* 保持一致的移动光标 */
+}
+
+/* 确保按钮区域保持默认光标 */
+.prompt-item button {
+  cursor: pointer;
+}
+
 .prompt-text {
   flex: 1;
   font-size: 14px;
   color: #555;
-  margin-right: 10px;
+  margin-right: 0px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: 160px;
 }
 
 /* 提示文本悬停效果 */
@@ -120,12 +146,15 @@ ul {
 .delete-btn {
   background-color: #e1e8ed;
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
+  border-radius: 3px;
+  padding: 2px 6px;
   font-size: 12px;
   cursor: pointer;
-  margin-left: 5px;
+  margin-left: 3px;
   transition: background-color 0.2s ease;
+  min-width: 35px;
+  height: 24px;
+  line-height: 20px;
 }
 
 .copy-btn { color: #007acc; }
@@ -158,6 +187,10 @@ ul {
   max-width: 500px;
   animation: modalFadeIn 0.3s;
   margin: 0 20px;
+  max-height: 90vh;  /* 限制最大高度 */
+  overflow-y: auto;
+  scrollbar-width: thin;  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
 }
 
 .modal-header {
@@ -239,6 +272,8 @@ ul {
   justify-content: flex-end;
   gap: 8px;
   margin-bottom: 8px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-secondary {
@@ -270,6 +305,9 @@ ul {
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 5px;
 }
 
 #add-btn:hover {
@@ -367,4 +405,97 @@ ul {
     opacity: 0;
     transform: translateX(20px);
   }
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 文本区域滚动条样式 */
+textarea {
+  scrollbar-width: thin;  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
+}
+
+/* 列表容器样式 */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f5f5f5;
+}
+
+/* 模态框内容滚动条 */
+.modal-content {
+  max-height: 90vh;  /* 限制最大高度 */
+  overflow-y: auto;
+  scrollbar-width: thin;  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
+}
+
+/* 标题行样式 */
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* 改为居中对齐 */
+  position: relative;  /* 添加相对定位 */
+  padding: 0 10px;
+  margin-bottom: 8px;
+}
+
+/* 调整 star 位置 */
+.github-star {
+  position: absolute;  /* 使用绝对定位 */
+  right: 10px;  /* 固定在右侧 */
+  font-size: 20px;
+  color: #666;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+.github-star:hover {
+  transform: scale(1.2);
+}
+
+.prompt-item.dragging {
+  opacity: 0.5;
+  background-color: #f5f5f5;
+  border: 2px dashed #4a90e2;
+}
+
+.prompt-item.drag-over {
+  border-top: 2px solid #4a90e2;
+}
+
+/* 拖动手柄样式 */
+.drag-handle {
+  color: #ccc;
+  margin-right: 4px;  /* 减小与文字的间距 */
+  font-size: 14px;
+  cursor: move;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  letter-spacing: 2px;
 } 
