@@ -187,10 +187,10 @@ ul {
   max-width: 500px;
   animation: modalFadeIn 0.3s;
   margin: 0 20px;
-  max-height: 90vh;  /* 限制最大高度 */
+  max-height: 90vh;
   overflow-y: auto;
-  scrollbar-width: thin;  /* Firefox */
-  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f5f5f5;
 }
 
 .modal-header {
@@ -201,7 +201,8 @@ ul {
 }
 
 .modal-body {
-  padding: 10px;
+  padding: 20px;  /* 统一的内边距 */
+  box-sizing: border-box;
 }
 
 .modal-footer {
@@ -238,14 +239,12 @@ ul {
 }
 
 .modal-textarea {
-  width: 100%;
-  min-height: 100px;
+  width: 100% !important;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
   resize: vertical;
-  box-sizing: border-box;
 }
 
 .modal-textarea:focus {

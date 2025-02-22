@@ -108,11 +108,14 @@ function startEditing(textSpan, editInput, prompt, index) {
   
   const modalBody = document.createElement('div');
   modalBody.className = 'modal-body';
+  modalBody.style.padding = '20px';  // 直接在元素上设置内边距
   
   // 创建新的文本框
   const modalTextarea = document.createElement('textarea');
   modalTextarea.className = 'modal-textarea';
   modalTextarea.value = prompt;
+  
+  modalBody.appendChild(modalTextarea);
   
   const modalFooter = document.createElement('div');
   modalFooter.className = 'modal-footer';
@@ -125,7 +128,6 @@ function startEditing(textSpan, editInput, prompt, index) {
   cancelButton.textContent = 'Cancel';
   cancelButton.className = 'modal-btn cancel';
   
-  modalBody.appendChild(modalTextarea);
   modalFooter.appendChild(cancelButton);
   modalFooter.appendChild(saveButton);
   
