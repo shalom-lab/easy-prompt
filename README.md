@@ -1,0 +1,92 @@
+# Easy Prompt
+
+Easy Prompt is a powerful browser extension that helps you save and quickly reuse prompts across various AI platforms.
+
+[English](README.md) | [中文](README_CN.md)
+
+### Features
+
+- 🚀 Support for Multiple AI Platforms
+  - ChatGPT
+  - Claude
+  - Gemini
+  - DeepSeek
+  - DALL·E
+  - MidJourney
+  - Bing AI
+  - Jasper
+  - Runway
+  - LLaMA
+  - And more...
+
+- 💾 Convenient Prompt Management
+  - Save frequently used prompts with one click
+  - Quick insertion of saved prompts
+  - Category management and organization
+  
+- ⚡ Efficiency Boost
+  - Right-click menu access
+  - Keyboard shortcuts support
+  - Clipboard integration
+
+### Installation
+
+1. Install from Chrome Web Store (link coming soon)
+2. Manual installation:
+   - Download the code from this repository
+   - Open Chrome and go to `chrome://extensions/`
+   - Enable "Developer mode"
+   - Click "Load unpacked"
+   - Select the downloaded code folder
+
+### How to Use
+
+1. **Save Prompts**
+   - Right-click in any AI platform's input box
+   - Select "Save as Prompt"
+   - Enter name and description (optional)
+   
+   ![Save Prompt](images/save-prompt.gif)
+
+2. **Use Saved Prompts**
+   - Click the extension icon to open the panel
+   - Select the prompt you want to use
+   - Click to insert into the current input box
+   
+   ![Use Prompt](images/insert-prompt.gif)
+
+3. **Manage Prompts**
+   - Edit, delete, and categorize prompts in the extension panel
+   - Import/Export functionality supported
+   
+   ![Manage Prompts](images/manage-prompt.gif)
+
+### Privacy Statement
+
+- All data is stored locally, nothing is uploaded to any server
+- Only necessary permissions are requested for core functionality
+- Completely open source with transparent code
+
+### Contributing
+
+Contributions are welcome! Feel free to submit Pull Requests.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the [MIT License](LICENSE)
+
+## Contact
+
+- Project Homepage: https://github.com/shalom-lab/easy-prompt
+- Issues: Please submit via GitHub Issues
+
+
+---
+
+If you find this project helpful, please give us a ⭐️ star! 
