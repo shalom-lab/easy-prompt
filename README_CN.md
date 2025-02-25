@@ -17,6 +17,7 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
   - Jasper
   - Runway
   - LLaMA
+  
   - 等更多...
 
 - 💾 便捷的提示词管理

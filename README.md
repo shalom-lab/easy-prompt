@@ -17,6 +17,7 @@ Easy Prompt is a powerful browser extension that helps you save and quickly reus
   - Jasper
   - Runway
   - LLaMA
+  - Grok
   - And more...
 
 - 💾 Convenient Prompt Management
