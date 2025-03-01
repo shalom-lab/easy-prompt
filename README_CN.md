@@ -57,7 +57,7 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
    ![使用提示词](images/insert-prompt.gif)
 
 3. **管理提示词**
-   - 在扩展面板中可以编辑、删除、分类管理提示词
+   - 在扩展面板中可以编辑、删除、排序管理提示词
    - 支持导入/导出功能
    
    ![Manage Prompts](images/manage-prompt.gif)
