@@ -57,7 +57,7 @@ Easy Prompt is a powerful browser extension that helps you save and quickly reus
    ![Use Prompt](images/insert-prompt.gif)
 
 3. **Manage Prompts**
-   - Edit, delete, and categorize prompts in the extension panel
+   - Edit, delete, and sort prompts in the extension panel
    - Import/Export functionality supported
    
    ![Manage Prompts](images/manage-prompt.gif)
