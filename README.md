@@ -1,88 +1,106 @@
-# Easy Prompt
+<div align="center">
 
-Easy Prompt is a powerful browser extension that helps you save and quickly reuse prompts across various AI platforms.
+# 🎯 Easy Prompt
+
+<p align="center">
+  <img src="icons/icon128.png" alt="Easy Prompt Logo" width="128" height="128">
+</p>
+
+A powerful browser extension that helps you save and quickly reuse prompts across various AI platforms.
+
+[![GitHub release](https://img.shields.io/github/v/release/shalom-lab/easy-prompt?color=brightgreen)](https://github.com/shalom-lab/easy-prompt/releases)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shalom-lab/easy-prompt/pulls)
 
 [English](README.md) | [中文](README_CN.md)
 
-### Features
+</div>
 
-- 🚀 Support for Multiple AI Platforms
-  - ChatGPT
-  - Claude
-  - Gemini
-  - DeepSeek
-  - DALL·E
-  - MidJourney
-  - Bing AI
-  - Jasper
-  - Runway
-  - LLaMA
-  - Grok
-  - And more...
+> 💡 **Looking for amazing prompts?**  
+> Visit our [Awesome Prompt Market](https://shalom-lab.github.io/awesome-prompt/) to discover, share and use curated prompts from the community!
 
-- 💾 Convenient Prompt Management
-  - Save frequently used prompts with one click
-  - Quick insertion of saved prompts
-  - Category management and organization
-  
-- ⚡ Efficiency Boost
-  - Right-click menu access
-  - Keyboard shortcuts support
-  - Clipboard integration
+## ✨ Features
 
-## Installation
+### 🚀 Multi-Platform Support
+- ChatGPT
+- Claude
+- Gemini
+- DeepSeek
+- DALL·E
+- MidJourney
+- Bing AI
+- Jasper
+- Runway
+- LLaMA
+- Grok
+- And more...
 
-### Chrome / Edge / 360 Browser
+### 💾 Smart Management
+- One-click prompt saving
+- Quick prompt insertion
+- Category organization
+
+### ⚡ Efficiency Boost
+- Right-click menu access
+- Keyboard shortcuts
+- Clipboard integration
+
+## 🔧 Installation
+
+<details>
+<summary><b>Chrome / Edge / 360 Browser</b></summary>
+
 1. Download `chromium.zip` from [Releases](https://github.com/shalom-lab/easy-prompt/releases)
 2. Unzip the file
 3. Open Chrome/Edge, go to `chrome://extensions/` or `edge://extensions/`
 4. Enable "Developer mode" in the top right corner
 5. Click "Load unpacked" button
 6. Select the unzipped folder
+</details>
 
-### Firefox
+<details>
+<summary><b>Firefox</b></summary>
+
 1. Download `firefox.zip` from [Releases](https://github.com/shalom-lab/easy-prompt/releases)
 2. Go to `about:debugging` in Firefox
 3. Click "This Firefox" on the left sidebar
 4. Click "Load Temporary Add-on"
 5. Select the `manifest.json` file in the unzipped folder
+</details>
 
-### Notes
-- For Chrome/Edge/360: The extension will need to be re-enabled after browser restart
-- Firefox: The extension will need to be re-installed after browser restart
-- All data is stored locally in your browser
+## 📖 How to Use
 
-### How to Use
+### 1️⃣ Save Prompts
+- Right-click in any AI platform's input box
+- Select "Save as Prompt"
+- Enter name and description (optional)
 
-1. **Save Prompts**
-   - Right-click in any AI platform's input box
-   - Select "Save as Prompt"
-   - Enter name and description (optional)
-   
-   ![Save Prompt](images/save-prompt.gif)
+![Save Prompt](images/save-prompt.gif)
 
-2. **Use Saved Prompts**
-   - Click the extension icon to open the panel
-   - Select the prompt you want to use
-   - Click to insert into the current input box
-   
-   ![Use Prompt](images/insert-prompt.gif)
+### 2️⃣ Use Saved Prompts
+- Click the extension icon to open the panel
+- Select the prompt you want to use
+- Click to insert into the current input box
 
-3. **Manage Prompts**
-   - Edit, delete, and sort prompts in the extension panel
-   - Import/Export functionality supported
-   
-   ![Manage Prompts](images/manage-prompt.gif)
+![Use Prompt](images/insert-prompt.gif)
 
-### Privacy Statement
+### 3️⃣ Manage Prompts
+- Edit, delete, and sort prompts in the extension panel
+- Import/Export functionality supported
+- Import awesome prompts from our [Prompt Market](https://shalom-lab.github.io/awesome-prompt/) 🎯
 
-- All data is stored locally, nothing is uploaded to any server
-- Only necessary permissions are requested for core functionality
-- Completely open source with transparent code
+![Manage Prompts](images/manage-prompt.gif)
 
-### Contributing
+## 🔒 Privacy
 
-Contributions are welcome! Feel free to submit Pull Requests.
+- All data is stored locally
+- No server uploads
+- Minimal permissions
+- Open source code
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -90,15 +108,19 @@ Contributions are welcome! Feel free to submit Pull Requests.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
+## 📄 License
 
 This project is licensed under the [MIT License](LICENSE)
 
-## Contact
+## 📞 Contact
 
 - Project Homepage: https://github.com/shalom-lab/easy-prompt
 - Issues: Please submit via GitHub Issues
 
 ---
 
-If you find this project helpful, please give us a ⭐️ star! 
+<div align="center">
+
+If you find this project helpful, please give us a ⭐️ star!
+
+</div> 
