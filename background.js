@@ -41,7 +41,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         chrome.storage.local.set({ prompts }, () => {
           chrome.notifications.create({
             type: 'basic',
-            iconUrl: 'icon48.png',
+            iconUrl: 'icons/icon48.png',
             title: 'Easy Prompt',
             message: 'Text saved successfully!'
           });
