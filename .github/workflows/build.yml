@@ -34,7 +34,7 @@ jobs:
       run: |
         mkdir -p dist/firefox/icons
         cp manifest.json popup.js styles.css dist/firefox/
-        cp icons/icon{16,48,128}.svg dist/firefox/icons/
+        cp icons/icon{16,48,128}.png dist/firefox/icons/
         cd dist/firefox
         jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
         mv manifest.tmp manifest.json
