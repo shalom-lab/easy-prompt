@@ -1,0 +1,72 @@
+name: Build Browser Extensions
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install -g web-ext
+        
+    - name: Build Chromium-based Extension
+      run: |
+        mkdir -p dist/chrome
+        cp -r src/* dist/chrome/
+        cd dist/chrome
+        zip -r ../chromium.zip *
+        
+    - name: Build Firefox Extension
+      run: |
+        mkdir -p dist/firefox
+        cp -r src/* dist/firefox/
+        jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
+        mv manifest.tmp manifest.json
+        web-ext build -s . -a ../firefox
+        
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          dist/chromium.zip
+          dist/firefox.zip
+        name: Release ${{ github.ref_name }}
+        body: |
+          Easy Prompt Browser Extension Release ${{ github.ref_name }}
+          
+          ### 支持的浏览器 Supported Browsers:
+          - Chrome
+          - Edge
+          - 360浏览器
+          - Firefox
+          
+          ### 安装说明 Installation:
+          
+          #### Chromium-based (Chrome/Edge/360):
+          1. 解压 chromium.zip
+          2. 访问 chrome://extensions
+          3. 开启"开发者模式"
+          4. 点击"加载已解压的扩展程序"
+          5. 选择解压后的文件夹
+          
+          #### Firefox:
+          1. 访问 about:debugging
+          2. 点击"临时载入附加组件"
+          3. 选择 firefox.zip 中的 manifest.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
