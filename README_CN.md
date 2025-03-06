@@ -17,7 +17,7 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
   - Jasper
   - Runway
   - LLaMA
-  
+  - Grok
   - 等更多...
 
 - 💾 便捷的提示词管理
@@ -30,15 +30,27 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
   - 快捷键支持
   - 剪贴板集成
 
-### 安装
+## 安装说明
 
-1. 从 Chrome 网上应用店安装（链接待添加）
-2. 或者手动安装：
-   - 下载此仓库的代码
-   - 打开 Chrome，进入扩展管理页面 `chrome://extensions/`
-   - 启用"开发者模式"
-   - 点击"加载已解压的扩展程序"
-   - 选择下载的代码文件夹
+### Chrome / Edge / 360浏览器
+1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `chromium.zip`
+2. 解压文件
+3. 打开浏览器，访问 `chrome://extensions/` 或 `edge://extensions/`
+4. 在右上角开启"开发者模式"
+5. 点击"加载已解压的扩展程序"
+6. 选择解压后的文件夹
+
+### Firefox 火狐浏览器
+1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `firefox.zip`
+2. 在 Firefox 中访问 `about:debugging`
+3. 点击左侧栏的"此 Firefox"
+4. 点击"临时载入附加组件"
+5. 选择解压后文件夹中的 `manifest.json` 文件
+
+### 注意事项
+- Chrome/Edge/360：浏览器重启后需要重新启用扩展
+- Firefox：浏览器重启后需要重新安装扩展
+- 所有数据都存储在本地浏览器中
 
 ### 使用方法
 
@@ -47,7 +59,7 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
    - 选择"保存为提示词"
    - 输入名称和描述（可选）
    
-   ![Save Prompt](images/save-prompt.gif)
+   ![保存提示词](images/save-prompt.gif)
 
 2. **使用已保存的提示词**
    - 点击扩展图标打开面板
@@ -60,7 +72,7 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
    - 在扩展面板中可以编辑、删除、排序管理提示词
    - 支持导入/导出功能
    
-   ![Manage Prompts](images/manage-prompt.gif)
+   ![管理提示词](images/manage-prompt.gif)
 
 ### 隐私说明
 
@@ -86,7 +98,6 @@ Easy Prompt 是一个强大的浏览器扩展，帮助您保存和快速重用�
 
 - 项目主页：https://github.com/shalom-lab/easy-prompt
 - 问题反馈：请在 GitHub Issues 中提交
-
 
 ---
 

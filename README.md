@@ -2,7 +2,7 @@
 
 Easy Prompt is a powerful browser extension that helps you save and quickly reuse prompts across various AI platforms.
 
-[English](#installation) | [中文](#安装说明)
+[English](README.md) | [中文](README_CN.md)
 
 ### Features
 
@@ -47,36 +47,10 @@ Easy Prompt is a powerful browser extension that helps you save and quickly reus
 4. Click "Load Temporary Add-on"
 5. Select the `manifest.json` file in the unzipped folder
 
----
-
-## 安装说明
-
-### Chrome / Edge / 360浏览器
-1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `chromium.zip`
-2. 解压文件
-3. 打开浏览器，访问 `chrome://extensions/` 或 `edge://extensions/`
-4. 在右上角开启"开发者模式"
-5. 点击"加载已解压的扩展程序"
-6. 选择解压后的文件夹
-
-### Firefox 火狐浏览器
-1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `firefox.zip`
-2. 在 Firefox 中访问 `about:debugging`
-3. 点击左侧栏的"此 Firefox"
-4. 点击"临时载入附加组件"
-5. 选择解压后文件夹中的 `manifest.json` 文件
-
-## Notes / 注意事项
-
+### Notes
 - For Chrome/Edge/360: The extension will need to be re-enabled after browser restart
 - Firefox: The extension will need to be re-installed after browser restart
 - All data is stored locally in your browser
-
----
-
-- Chrome/Edge/360：浏览器重启后需要重新启用扩展
-- Firefox：浏览器重启后需要重新安装扩展
-- 所有数据都存储在本地浏览器中
 
 ### How to Use
 
@@ -124,7 +98,6 @@ This project is licensed under the [MIT License](LICENSE)
 
 - Project Homepage: https://github.com/shalom-lab/easy-prompt
 - Issues: Please submit via GitHub Issues
-
 
 ---
 
