@@ -25,17 +25,29 @@ jobs:
     - name: Build Chromium-based Extension
       run: |
         mkdir -p dist/chrome
-        cp -r src/* dist/chrome/
+        cp manifest.json dist/chrome/
+        cp *.js dist/chrome/ || true
+        cp *.css dist/chrome/ || true
+        cp *.html dist/chrome/ || true
+        cp -r images dist/chrome/ || true
+        cp icon*.png dist/chrome/ || true
         cd dist/chrome
         zip -r ../chromium.zip *
         
     - name: Build Firefox Extension
       run: |
         mkdir -p dist/firefox
-        cp -r src/* dist/firefox/
+        cp manifest.json dist/firefox/
+        cp *.js dist/firefox/ || true
+        cp *.css dist/firefox/ || true
+        cp *.html dist/firefox/ || true
+        cp -r images dist/firefox/ || true
+        cp icon*.png dist/firefox/ || true
+        cd dist/firefox
         jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
         mv manifest.tmp manifest.json
-        web-ext build -s . -a ../firefox
+        web-ext build
+        mv web-ext-artifacts/*.zip ../firefox.zip
         
     - name: Create Release
       id: create_release
