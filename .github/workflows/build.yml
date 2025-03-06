@@ -25,24 +25,16 @@ jobs:
     - name: Build Chromium-based Extension
       run: |
         mkdir -p dist/chrome
-        cp manifest.json dist/chrome/
-        cp *.js dist/chrome/ || true
-        cp *.css dist/chrome/ || true
-        cp *.html dist/chrome/ || true
-        cp -r images dist/chrome/ || true
-        cp icon*.png dist/chrome/ || true
+        cp manifest.json popup.js styles.css dist/chrome/
+        cp icon.svg dist/chrome/
         cd dist/chrome
         zip -r ../chromium.zip *
         
     - name: Build Firefox Extension
       run: |
         mkdir -p dist/firefox
-        cp manifest.json dist/firefox/
-        cp *.js dist/firefox/ || true
-        cp *.css dist/firefox/ || true
-        cp *.html dist/firefox/ || true
-        cp -r images dist/firefox/ || true
-        cp icon*.png dist/firefox/ || true
+        cp manifest.json popup.js styles.css dist/firefox/
+        cp icon.svg dist/firefox/
         cd dist/firefox
         jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
         mv manifest.tmp manifest.json
