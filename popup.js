@@ -52,8 +52,12 @@ function addPromptToUI(prompt, index) {
   });
 
   const copyButton = document.createElement('button');
-  copyButton.textContent = 'Copy';
-  copyButton.className = 'copy-btn';
+  copyButton.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.242a2 2 0 0 0-.602-1.43L16.083 2.57A2 2 0 0 0 14.685 2H10a2 2 0 0 0-2 2z"/>
+    <path d="M16 18v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h2"/>
+  </svg>`;
+  copyButton.className = 'copy-btn icon-btn';
+  copyButton.title = 'Copy';
   copyButton.onclick = () => {
     navigator.clipboard.writeText(prompt);
     
@@ -70,15 +74,23 @@ function addPromptToUI(prompt, index) {
   };
 
   const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  editButton.className = 'edit-btn';
+  editButton.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+  </svg>`;
+  editButton.className = 'edit-btn icon-btn';
+  editButton.title = 'Edit';
   editButton.onclick = () => {
     startEditing(textSpan, editInput, prompt, index);
   };
 
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.className = 'delete-btn';
+  deleteButton.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M18 6L6 18"/>
+    <path d="M6 6l12 12"/>
+  </svg>`;
+  deleteButton.className = 'delete-btn icon-btn';
+  deleteButton.title = 'Delete';
   deleteButton.onclick = () => {
     showDeleteConfirm(index);
   };
@@ -249,9 +261,13 @@ function exportPrompts() {
     const blob = new Blob([JSON.stringify(prompts, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     
+    // 生成当前日期字符串 (YYYY-MM-DD 格式)
+    const date = new Date();
+    const dateStr = date.toISOString().split('T')[0];
+    
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'prompts.json';
+    a.download = `easy-prompts-${dateStr}.json`;
     a.click();
     
     URL.revokeObjectURL(url);
@@ -263,17 +279,24 @@ function importPrompts(file) {
   const reader = new FileReader();
   reader.onload = (e) => {
     try {
-      const prompts = JSON.parse(e.target.result);
-      if (Array.isArray(prompts)) {
-        chrome.storage.local.set({ prompts }, () => {
-          loadPrompts();
-          // Show success toast
-          const toast = document.createElement('div');
-          toast.className = 'toast';
-          toast.textContent = 'Prompts imported successfully!';
-          document.body.appendChild(toast);
-          toast.addEventListener('animationend', () => {
-            document.body.removeChild(toast);
+      const newPrompts = JSON.parse(e.target.result);
+      if (Array.isArray(newPrompts)) {
+        // 获取现有的提示词，然后追加新的
+        chrome.storage.local.get(['prompts'], (result) => {
+          const existingPrompts = result.prompts || [];
+          const updatedPrompts = [...existingPrompts, ...newPrompts];
+          //去重  
+          const uniquePrompts = [...new Set(updatedPrompts)];
+          chrome.storage.local.set({ prompts: uniquePrompts }, () => {
+            loadPrompts();
+            // Show success toast
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = 'Prompts appended successfully!';
+            document.body.appendChild(toast);
+            toast.addEventListener('animationend', () => {
+              document.body.removeChild(toast);
+            });
           });
         });
       }

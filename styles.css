@@ -7,20 +7,44 @@ body {
   width: 360px;
   color: #333;
   box-sizing: border-box;
+  overflow: hidden;  /* 隐藏外部滚动条 */
+  height: 600px;    /* 设置固定高度 */
+  display: flex;    /* 使用flex布局 */
+  flex-direction: column;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
 }
 
 .header-container {
   margin-bottom: 5px;
   text-align: center;
-  padding: 10px 0;
-  border-bottom: 2px solid #eaecef;
-  max-width: 100%;
-  box-sizing: border-box;
+  padding: 5px 0;  /* 减小上下内边距 */
+  border-bottom: 1px solid #eaecef;
+  flex-shrink: 0;  /* 防止头部压缩 */
+}
+
+.input-container {
+  margin-bottom: 5px;
+  flex-shrink: 0;  /* 防止输入区域压缩 */
+}
+
+.button-group {
+  margin-bottom: 5px;
+  flex-shrink: 0;  /* 防止按钮区域压缩 */
 }
 
 h1 {
   font-size: 2em;
   color: #4a90e2;
+  background: linear-gradient(135deg, #3a56d4, #f72585);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin: 0;
   padding: 0;
 }
@@ -28,18 +52,18 @@ h1 {
 /* 输入区域样式 */
 textarea {
   width: calc(100% - 22px);
-  height: 60px;
-  padding: 10px;
+  height: 50px;  /* 减小默认高度 */
+  padding: 8px;  /* 减小内边距 */
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   background-color: #fff;
   transition: border-color 0.2s ease;
   resize: vertical;
   max-width: calc(100% - 22px);
-  min-height: 60px;
-  max-height: 200px;
+  min-height: 50px;
+  max-height: 250px;
   scrollbar-width: thin;  /* Firefox */
   scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
 }
@@ -76,8 +100,9 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 400px;
-  overflow-y: auto;
+  flex: 1;         /* 列表占用剩余空间 */
+  overflow-y: auto;  /* 只在列表区域显示滚动条 */
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f5f5f5;
 }
@@ -86,13 +111,14 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 10px;
-  margin-bottom: 5px;
+  padding: 4px 8px;  /* 减小内边距 */
+  margin-bottom: 4px;  /* 减小底部间距 */
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
   transition: box-shadow 0.2s ease;
-  height: 40px;
+  height: 32px;  /* 减小高度 */
+  min-height: 32px;
   box-sizing: border-box;
   max-width: 100%;
   cursor: move;
@@ -153,8 +179,8 @@ ul {
   margin-left: 3px;
   transition: background-color 0.2s ease;
   min-width: 35px;
-  height: 24px;
-  line-height: 20px;
+  height: 20px;
+  line-height: 18px;
 }
 
 .copy-btn { color: #007acc; }
@@ -187,7 +213,7 @@ ul {
   max-width: 500px;
   animation: modalFadeIn 0.3s;
   margin: 0 20px;
-  max-height: 90vh;
+  max-height: 100vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f5f5f5;
@@ -240,6 +266,7 @@ ul {
 
 .modal-textarea {
   width: 100% !important;
+  height: 250px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -273,28 +300,57 @@ ul {
   margin-bottom: 8px;
   max-width: 100%;
   box-sizing: border-box;
+  padding: 0 5px;
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background-color: #f8f9fa;
   color: #666;
-  border: none;
+  border: 0px solid #e1e4e8;
   padding: 4px 8px;
   font-size: 12px;
-  border-radius: 3px;
+  border-radius: 4px;
   transition: all 0.2s ease;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .btn-secondary:hover {
   background-color: #f1f3f4;
   color: #333;
+  border-color: #cfd3d7;
+  text-decoration: none;
+}
+
+.btn-secondary svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+/* Market 按钮特殊样式 */
+.btn-market {
+  margin-right: auto; /* 将 Market 按钮推到左边 */
+  color: #6366f1;
+  border-color: #e0e7ff;
+  background-color: #f5f6ff;
+}
+
+.btn-market:hover {
+  color: #4f46e5;
+  background-color: #e8eaff;
+  border-color: #c7d2fe;
 }
 
 /* Add 按钮样式 */
 #add-btn {
   width: 100%;
+  height: 40px;
   min-width: 240px;
-  padding: 8px 24px;
+  padding: 6px 24px;  /* 减小内边距 */
   background-color: #4a90e2;
   color: white;
   border: none;
@@ -377,11 +433,12 @@ ul {
   border-radius: 4px;
   font-size: 14px;
   z-index: 2000;
-  animation: toastFadeIn 0.3s, toastFadeOut 0.3s 1.7s;
+  animation: toastFadeIn 0.3s, toastFadeOut 0.3s 2.7s;  /* 增加显示时间到3秒 */
 }
 
 .toast.error {
   background-color: rgba(231, 76, 60, 0.9);
+  animation: toastFadeIn 0.3s, toastFadeOut 0.3s 3.7s;  /* 错误提示显示更久一些 */
 }
 
 @keyframes toastFadeIn {
@@ -408,19 +465,17 @@ ul {
 
 /* 自定义滚动条样式 */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;  /* 更细的滚动条 */
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f5f5;
-  border-radius: 4px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #c1c1c1;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -438,8 +493,9 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 400px;
-  overflow-y: auto;
+  flex: 1;         /* 列表占用剩余空间 */
+  overflow-y: auto;  /* 只在列表区域显示滚动条 */
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f5f5f5;
 }
