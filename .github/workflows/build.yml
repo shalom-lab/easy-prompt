@@ -24,17 +24,17 @@ jobs:
         
     - name: Build Chromium-based Extension
       run: |
-        mkdir -p dist/chrome
+        mkdir -p dist/chrome/icons
         cp manifest.json popup.js styles.css dist/chrome/
-        cp icon.svg dist/chrome/
+        cp icons/icon{16,48,128}.svg dist/chrome/icons/
         cd dist/chrome
         zip -r ../chromium.zip *
         
     - name: Build Firefox Extension
       run: |
-        mkdir -p dist/firefox
+        mkdir -p dist/firefox/icons
         cp manifest.json popup.js styles.css dist/firefox/
-        cp icon.svg dist/firefox/
+        cp icons/icon{16,48,128}.svg dist/firefox/icons/
         cd dist/firefox
         jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
         mv manifest.tmp manifest.json
