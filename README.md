@@ -8,7 +8,9 @@
 
 A powerful browser extension that helps you save and quickly reuse prompts across various AI platforms.
 
+
 [![GitHub release](https://img.shields.io/github/v/release/shalom-lab/easy-prompt?color=brightgreen)](https://github.com/shalom-lab/easy-prompt/releases)
+[![GitHub stars](https://img.shields.io/github/stars/shalom-lab/easy-prompt?style=social)](https://github.com/shalom-lab/easy-prompt/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shalom-lab/easy-prompt/pulls)
 
@@ -38,11 +40,9 @@ A powerful browser extension that helps you save and quickly reuse prompts acros
 ### 💾 Smart Management
 - One-click prompt saving
 - Quick prompt insertion
-- Category organization
 
 ### ⚡ Efficiency Boost
 - Right-click menu access
-- Keyboard shortcuts
 - Clipboard integration
 
 ## 🔧 Installation

@@ -9,6 +9,7 @@
 一个强大的浏览器扩展，帮助您保存和快速重用各种 AI 平台的提示词（Prompts）。
 
 [![GitHub release](https://img.shields.io/github/v/release/shalom-lab/easy-prompt?color=brightgreen)](https://github.com/shalom-lab/easy-prompt/releases)
+[![GitHub stars](https://img.shields.io/github/stars/shalom-lab/easy-prompt?style=social)](https://github.com/shalom-lab/easy-prompt/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/shalom-lab/easy-prompt/pulls)
 
@@ -38,11 +39,10 @@
 ### 💾 智能管理
 - 一键保存提示词
 - 快速插入使用
-- 分类整理
+
 
 ### ⚡ 效率提升
 - 右键菜单快捷访问
-- 快捷键支持
 - 剪贴板集成
 
 ## 🔧 安装说明
@@ -73,7 +73,6 @@
 ### 1️⃣ 保存提示词
 - 在任何 AI 平台的输入框中右键
 - 选择"保存为提示词"
-- 输入名称和描述（可选）
 
 ![保存提示词](images/save-prompt.gif)
 
