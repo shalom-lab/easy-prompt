@@ -1,5 +1,18 @@
 // Create context menus
 chrome.runtime.onInstalled.addListener(() => {
+  // 设置默认的 prompts
+  const defaultPrompts = [
+    "开局一个碗，结局一根绳。发挥你的想象力，撰写一段波澜壮阔的关于一个王朝兴衰的历史故事",
+    "Begin with a bowl and end with a rope. Unleash your imagination to craft an epic historical tale."
+  ];
+
+  // 初始化存储
+  chrome.storage.local.get(['prompts'], (result) => {
+    if (!result.prompts) {
+      chrome.storage.local.set({ prompts: defaultPrompts });
+    }
+  });
+
   // Initial setup of menus
   createContextMenus();
 });
