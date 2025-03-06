@@ -1,0 +1,27 @@
+{
+  "name": "easy-prompt",
+  "version": "1.0.0",
+  "description": "Browser extension to save and reuse prompts for AI platforms",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalom-lab/easy-prompt.git"
+  },
+  "keywords": [
+    "browser-extension",
+    "chrome-extension",
+    "firefox-addon",
+    "ai",
+    "prompts"
+  ],
+  "author": "shalom-lab",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shalom-lab/easy-prompt/issues"
+  },
+  "homepage": "https://github.com/shalom-lab/easy-prompt#readme",
+  "dependencies": {},
+  "devDependencies": {}
+} 
