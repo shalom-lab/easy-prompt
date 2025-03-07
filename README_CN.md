@@ -2,15 +2,10 @@
 
 # 🎯 Easy Prompt
 
-<!--
+
 <div align="center">
   <img src="icons/icon128.png" alt="Easy Prompt Logo" width="128" height="128">
 </div>
--->
-
-<p align="center">
-  <img src="images/promotional_tile_large.png" alt="Easy Prompt Banner" width="100%">
-</p>
 
 一个强大的浏览器扩展，帮助您保存和快速重用各种 AI 平台的提示词（Prompts）。
 
@@ -73,6 +68,10 @@
 4. 点击"临时载入附加组件"
 5. 选择解压后文件夹中的 `manifest.json` 文件
 </details>
+
+<p align="center">
+  <img src="images/promotional_tile_large.png" alt="Easy Prompt Banner" width="100%">
+</p>
 
 ## 📖 使用方法
 
