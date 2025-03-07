@@ -2,9 +2,11 @@
 
 # 🎯 Easy Prompt
 
-<div align="center" style="display:none">
+<!--
+<div align="center">
   <img src="icons/icon128.png" alt="Easy Prompt Logo" width="128" height="128">
 </div>
+-->
 
 <p align="center">
   <img src="images/promotional_tile_large.png" alt="Easy Prompt Banner" width="100%">
