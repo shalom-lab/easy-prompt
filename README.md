@@ -2,8 +2,12 @@
 
 # 🎯 Easy Prompt
 
-<p align="center">
+<p align="center" style="display:none">
   <img src="icons/icon128.png" alt="Easy Prompt Logo" width="128" height="128">
+</p>
+
+<p align="center">
+  <img src="images/promotional_tile_large.png" alt="Easy Prompt Banner" width="100%">
 </p>
 
 A powerful browser extension that helps you save and quickly reuse prompts across various AI platforms.
