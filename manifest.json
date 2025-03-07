@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Easy Prompt",
   "version": "1.0.0",
-  "description": "Save and reuse your amazing prompts for DeepSeek, ChatGPT, Claude, Gemini, DALL·E, MidJourney, Bing AI, Jasper, Runway, LLaMA, and other AI conversational assistants. Enhance your AI interaction efficiency with fast prompt insertion.",
-  "author": "your_name",
+  "description": "Save and reuse amazing prompts for DeepSeek, ChatGPT, Claude, Gemini, DALL·E, MidJourney, Bing AI, Jasper, Runway, LLaMA, etc. Enhance AI interaction efficiency with  quick prompt insertion.",
+  "author": "shalom-lab",
   "homepage_url": "https://github.com/shalom-lab/easy-prompt",
   "permissions": [
     "activeTab",
