@@ -47,7 +47,7 @@ A powerful browser extension that helps you save and quickly reuse prompts acros
 
 ## 🔧 Installation
 
-<details>
+<details open>
 <summary><b>Chrome / Edge / 360 Browser</b></summary>
 
 1. Download `chromium.zip` from [Releases](https://github.com/shalom-lab/easy-prompt/releases)

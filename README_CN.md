@@ -48,7 +48,7 @@
 
 ## 🔧 安装说明
 
-<details>
+<details open>
 <summary><b>Chrome / Edge / 360浏览器</b></summary>
 
 1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `chromium.zip`
