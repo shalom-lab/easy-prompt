@@ -49,7 +49,15 @@
 ## 🔧 安装说明
 
 <details open>
-<summary><b>Chrome / Edge / 360浏览器</b></summary>
+<summary><b>Chrome 网上应用店（推荐）</b></summary>
+
+1. 访问 [Chrome 网上应用店](https://chromewebstore.google.com/detail/bnmkcmfcfogkjphiokihhgidegkplpak?utm_source=item-share-cb)
+2. 点击"添加至 Chrome"
+3. 确认安装
+</details>
+
+<details>
+<summary><b>Chrome / Edge / 360浏览器（手动安装）</b></summary>
 
 1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `chromium.zip`
 2. 解压文件
