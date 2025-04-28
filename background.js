@@ -186,3 +186,41 @@ async function createContextMenus() {
     console.error('Error creating context menus:', error);
   }
 }
+
+chrome.permissions.onAdded.addListener((permissions) => {
+  console.log('权限已添加:', permissions);
+});
+
+chrome.permissions.onRemoved.addListener((permissions) => {
+  console.log('权限已移除:', permissions);
+});
+
+chrome.permissions.remove({
+  origins: [
+    'https://chat.openai.com/*',
+    'https://claude.ai/*',
+    'https://gemini.google.com/*',
+    'https://www.bing.com/*',
+    'https://www.midjourney.com/*',
+    'https://www.jasper.ai/*',
+    'https://www.runwayml.com/*',
+    'https://www.deepseek.com/*',
+    'https://kimi.moonshot.cn/*',
+    'https://qianwen.aliyun.com/*',
+    'https://yiyan.baidu.com/*',
+    'https://chatglm.cn/*',
+    'https://xinghuo.xfyun.cn/*',
+    'https://www.baichuan-ai.com/*',
+    'https://www.minimax.chat/*',
+    'https://www.doubao.com/*',
+    'https://www.360kuai.com/*',
+    'https://hunyuan.tencent.com/*',
+    'https://www.groq.com/*'
+  ]
+}, (removed) => {
+  if (removed) {
+    console.log('權限已移除');
+  } else {
+    console.log('權限未移除');
+  }
+});

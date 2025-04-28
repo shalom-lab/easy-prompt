@@ -4,6 +4,16 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '版本号 (例如: v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+      release:
+        description: '是否发布到商店'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -25,13 +35,31 @@ jobs:
         npm install
         npm install -g web-ext
         
+    - name: Get version
+      id: get_version
+      run: |
+        if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          VERSION="${{ github.event.inputs.version }}"
+        else
+          VERSION="${GITHUB_REF#refs/tags/}"
+        fi
+        # 移除版本号前缀 'v'
+        CLEAN_VERSION="${VERSION#v}"
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+        echo "CLEAN_VERSION=$CLEAN_VERSION" >> $GITHUB_OUTPUT
+        
+    - name: Update manifest version
+      run: |
+        jq '.version = "${{ steps.get_version.outputs.CLEAN_VERSION }}"' manifest.json > temp.json && mv temp.json manifest.json
+        cat manifest.json
+        
     - name: Build Chromium-based Extension
       run: |
         mkdir -p dist/chrome/icons
         cp manifest.json popup.html popup.js background.js content.js styles.css dist/chrome/
         cp icons/icon{16,48,128}.png dist/chrome/icons/
         cd dist/chrome
-        zip -r ../chromium.zip *
+        zip -r ../chromium-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip *
         
     - name: Build Firefox Extension
       run: |
@@ -42,18 +70,18 @@ jobs:
         jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
         mv manifest.tmp manifest.json
         web-ext build
-        mv web-ext-artifacts/*.zip ../firefox.zip
+        mv web-ext-artifacts/*.zip ../firefox-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip
         
     - name: Create Release
       uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
+      if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
       with:
         files: |
-          dist/chromium.zip
-          dist/firefox.zip
-        name: Release ${{ github.ref_name }}
+          dist/chromium-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip
+          dist/firefox-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip
+        name: Release ${{ steps.get_version.outputs.VERSION }}
         body: |
-          Easy Prompt Browser Extension Release ${{ github.ref_name }}
+          Easy Prompt Browser Extension Release ${{ steps.get_version.outputs.VERSION }}
           
           ### 支持的浏览器 Supported Browsers:
           - Chrome
@@ -64,7 +92,7 @@ jobs:
           ### 安装说明 Installation:
           
           #### Chromium-based (Chrome/Edge/360):
-          1. 解压 chromium.zip
+          1. 解压 chromium-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip
           2. 访问 chrome://extensions
           3. 开启"开发者模式"
           4. 点击"加载已解压的扩展程序"
@@ -73,6 +101,19 @@ jobs:
           #### Firefox:
           1. 访问 about:debugging
           2. 点击"临时载入附加组件"
-          3. 选择 firefox.zip 中的 manifest.json
+          3. 选择 firefox-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip 中的 manifest.json
+        tag_name: ${{ steps.get_version.outputs.VERSION }}
+        draft: false
+        prerelease: false
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Upload to Chrome Web Store
+      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.release }}
+      uses: mnao305/chrome-extension-upload@v4.0.1
+      with:
+        file-path: dist/chromium-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip
+        extension-id: ${{ secrets.CHROME_EXTENSION_ID }}
+        client-id: ${{ secrets.CHROME_CLIENT_ID }}
+        client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+        refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }} 

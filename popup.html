@@ -15,23 +15,51 @@
         <h1>Easy Prompt</h1>
         <a href="https://github.com/shalom-lab/easy-prompt" target="_blank" class="github-star">⭐</a>
       </div>
-      <div class="import-export">
-        <input type="file" id="import-file" accept=".json" style="display: none;">
-        <a href="https://shalom-lab.github.io/awesome-prompt/" target="_blank" class="btn-secondary btn-market">Market</a>
-        <button id="import-btn" class="btn-secondary">Import</button>
-        <button id="export-btn" class="btn-secondary">Export</button>
-      </div>
-    </div>
-    
-    <div class="input-container">
-      <textarea id="new-prompt" placeholder="Enter your prompt here... (Ctrl+V to paste, Ctrl+Enter to save)"></textarea>
+      <nav class="nav-buttons">
+        <div class="left-buttons">
+          <a href="https://shalom-lab.github.io/awesome-prompt/" target="_blank" class="btn-secondary btn-market">Market</a>
+          <button id="settings-btn" class="btn-secondary" title="Settings">⚙️</button>
+        </div>
+        <div class="right-buttons">
+          <input type="file" id="import-file" accept=".json" style="display: none;">
+          <button id="import-btn" class="btn-secondary">Import</button>
+          <button id="export-btn" class="btn-secondary">Export</button>
+        </div>
+      </nav>
     </div>
 
-    <div class="button-group">
-      <button id="add-btn">Add</button>
+    <div class="content-container">
+      <div class="home-container active">
+        <div class="input-container">
+          <textarea id="new-prompt" placeholder="Enter your prompt here... (Ctrl+V to paste, Ctrl+Enter to save)"></textarea>
+        </div>
+
+        <div class="button-group">
+          <button id="add-btn">Add</button>
+        </div>
+
+        <ul id="prompt-list"></ul>
+      </div>
+
+      <div class="permissions-container">
+        <div class="permission-status">
+          <div id="permission-state-text">Permission Status: Not Granted </div>
+          <div class="permission-desc" style="margin-top:10px;">
+            To enjoy all features of <span style="font-weight:bold; background: linear-gradient(135deg, #3a56d4, #f72585); -webkit-background-clip: text; background-clip: text; color: transparent;">Easy Prompt</span>, please grant the permission below.<br>
+            <ul style="padding-left: 22px; margin: 8px 0 0 0; list-style: disc; color: #4a90e2; font-size: 14px;">
+              <li><b>Insert prompts directly into website input boxes</b> <span style="color:#aaa;">(Requires permission to access supported websites)</span></li>
+            </ul>
+            <span style="color:#888;font-size:13px;">Other features like prompt management and clipboard copy work without extra permissions.</span>
+          </div>
+        </div>
+        <button id="request-permissions">Request Permissions</button>
+        <button id="check-permissions">Check Permissions</button>
+        <button id="remove-permissions">Remove Permissions</button>
+        <p style="text-align:left; color:#8a9aab; font-size:13px; margin-top:10px; margin-bottom:0;">
+          All features are open source and transparent at <a href="https://github.com/shalom-lab/easy-prompt" target="_blank" style="color:#4a90e2;text-decoration:underline;">shalom-lab/easy-prompt</a>. If you find Easy Prompt helpful, please consider giving us a ⭐ star.
+        </p>
+      </div>
     </div>
-    
-    <ul id="prompt-list"></ul>
   </div>
   <script src="popup.js"></script>
 </body>

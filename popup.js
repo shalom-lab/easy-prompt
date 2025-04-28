@@ -235,6 +235,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const importBtn = document.getElementById('import-btn');
   const exportBtn = document.getElementById('export-btn');
   const importFile = document.getElementById('import-file');
+  const settingsBtn = document.getElementById('settings-btn');
+
+  // Tab switching
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      tabContents.forEach(content => content.classList.remove('active'));
+      
+      // Add active class to clicked tab
+      tab.classList.add('active');
+      const tabId = `${tab.dataset.tab}-tab`;
+      document.getElementById(tabId).classList.add('active');
+    });
+  });
+
+  // Settings button handler
+  settingsBtn.addEventListener('click', () => {
+    const homeContainer = document.querySelector('.home-container');
+    const permissionsContainer = document.querySelector('.permissions-container');
+    
+    if (homeContainer.classList.contains('active')) {
+      homeContainer.classList.remove('active');
+      permissionsContainer.classList.add('active');
+    } else {
+      permissionsContainer.classList.remove('active');
+      homeContainer.classList.add('active');
+    }
+  });
 
   // Add click handlers
   importBtn.addEventListener('click', () => {
@@ -252,6 +284,62 @@ document.addEventListener('DOMContentLoaded', () => {
       e.target.value = '';
     }
   });
+
+  // 权限相关域名
+  const PERMISSION_ORIGINS = ['<all_urls>'];
+
+  function updatePermissionStatus() {
+    chrome.permissions.contains({ origins: PERMISSION_ORIGINS }, (result) => {
+      const stateText = document.getElementById('permission-state-text');
+      if (stateText) {
+        stateText.textContent = result ? 'Permission Status: Granted' : 'Permission Status: Not Granted';
+      }
+    });
+  }
+
+  // 权限相关代码
+  document.getElementById('request-permissions').addEventListener('click', () => {
+    chrome.permissions.request({
+      origins: ['<all_urls>']
+    }, function(granted) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = granted ? 'Permissions granted successfully!' : 'Permissions request was denied';
+      document.body.appendChild(toast);
+      toast.addEventListener('animationend', () => {
+        document.body.removeChild(toast);
+      });
+      updatePermissionStatus();
+    });
+  });
+
+  document.getElementById('check-permissions').addEventListener('click', () => {
+    chrome.permissions.contains({ origins: PERMISSION_ORIGINS }, (result) => {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = result ? 'Permissions are already granted' : 'Permissions are not granted yet';
+      document.body.appendChild(toast);
+      toast.addEventListener('animationend', () => {
+        document.body.removeChild(toast);
+      });
+      updatePermissionStatus();
+    });
+  });
+
+  document.getElementById('remove-permissions').addEventListener('click', () => {
+    chrome.permissions.remove({ origins: PERMISSION_ORIGINS }, (removed) => {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = removed ? 'Permissions removed successfully' : 'Failed to remove permissions';
+      document.body.appendChild(toast);
+      toast.addEventListener('animationend', () => {
+        document.body.removeChild(toast);
+      });
+      updatePermissionStatus();
+    });
+  });
+
+  updatePermissionStatus(); // 页面加载时自动检测
 });
 
 // Export prompts function
