@@ -59,7 +59,7 @@
 <details>
 <summary><b>Chrome / Edge / 360浏览器（手动安装）</b></summary>
 
-1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `chromium.zip`
+1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `chromium-<版本号>.zip`
 2. 解压文件
 3. 打开浏览器，访问 `chrome://extensions/` 或 `edge://extensions/`
 4. 在右上角开启"开发者模式"
@@ -70,7 +70,7 @@
 <details>
 <summary><b>Firefox 火狐浏览器</b></summary>
 
-1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `firefox.zip`
+1. 从 [Releases](https://github.com/shalom-lab/easy-prompt/releases) 下载 `firefox-<版本号>.zip`
 2. 在 Firefox 中访问 `about:debugging`
 3. 点击左侧栏的"此 Firefox"
 4. 点击"临时载入附加组件"
