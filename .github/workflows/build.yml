@@ -109,7 +109,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Upload to Chrome Web Store
-      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.release }}
+      if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.release == 'true' }}
       uses: mnao305/chrome-extension-upload@v4.0.1
       with:
         file-path: dist/chromium-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip
