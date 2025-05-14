@@ -7,9 +7,12 @@ body {
   width: 360px;
   color: #333;
   box-sizing: border-box;
-  overflow: hidden;  /* 隐藏外部滚动条 */
-  height: 600px;    /* 设置固定高度 */
-  display: flex;    /* 使用flex布局 */
+  overflow: hidden;
+  /* 隐藏外部滚动条 */
+  height: 600px;
+  /* 设置固定高度 */
+  display: flex;
+  /* 使用flex布局 */
   flex-direction: column;
 }
 
@@ -23,19 +26,23 @@ body {
 .header-container {
   margin-bottom: 5px;
   text-align: center;
-  padding: 5px 0;  /* 减小上下内边距 */
+  padding: 5px 0;
+  /* 减小上下内边距 */
   border-bottom: 1px solid #eaecef;
-  flex-shrink: 0;  /* 防止头部压缩 */
+  flex-shrink: 0;
+  /* 防止头部压缩 */
 }
 
 .input-container {
   margin-bottom: 5px;
-  flex-shrink: 0;  /* 防止输入区域压缩 */
+  flex-shrink: 0;
+  /* 防止输入区域压缩 */
 }
 
 .button-group {
   margin-bottom: 5px;
-  flex-shrink: 0;  /* 防止按钮区域压缩 */
+  flex-shrink: 0;
+  /* 防止按钮区域压缩 */
 }
 
 h1 {
@@ -52,8 +59,10 @@ h1 {
 /* 输入区域样式 */
 textarea {
   width: calc(100% - 22px);
-  height: 50px;  /* 减小默认高度 */
-  padding: 8px;  /* 减小内边距 */
+  height: 50px;
+  /* 减小默认高度 */
+  padding: 8px;
+  /* 减小内边距 */
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -64,8 +73,10 @@ textarea {
   max-width: calc(100% - 22px);
   min-height: 50px;
   max-height: 250px;
-  scrollbar-width: thin;  /* Firefox */
-  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;
+  /* Firefox */
 }
 
 textarea:focus {
@@ -95,30 +106,21 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* 列表样式 */
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 330px;
-  flex: 1;         /* 列表占用剩余空间 */
-  overflow-y: auto;  /* 只在列表区域显示滚动条 */
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #c1c1c1 #f5f5f5;
-}
 
 .prompt-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 8px;  /* 减小内边距 */
-  margin-bottom: 4px;  /* 减小底部间距 */
+  padding: 4px 8px;
+  /* 减小内边距 */
+  margin-bottom: 4px;
+  /* 减小底部间距 */
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
   transition: box-shadow 0.2s ease;
-  height: 32px;  /* 减小高度 */
+  height: 32px;
+  /* 减小高度 */
   min-height: 32px;
   box-sizing: border-box;
   max-width: 100%;
@@ -132,7 +134,8 @@ ul {
 
 /* 拖动时的光标样式 - 可以移除，因为 move 光标不需要活动状态 */
 .prompt-item:active {
-  cursor: move;  /* 保持一致的移动光标 */
+  cursor: move;
+  /* 保持一致的移动光标 */
 }
 
 /* 确保按钮区域保持默认光标 */
@@ -184,13 +187,29 @@ ul {
   line-height: 18px;
 }
 
-.copy-btn { color: #007acc; }
-.edit-btn { color: #ff9900; }
-.delete-btn { color: #cc3300; }
+.copy-btn {
+  color: #007acc;
+}
 
-.copy-btn:hover { background-color: #d0f0fd; }
-.edit-btn:hover { background-color: #fdf1d0; }
-.delete-btn:hover { background-color: #fde0e0; }
+.edit-btn {
+  color: #ff9900;
+}
+
+.delete-btn {
+  color: #cc3300;
+}
+
+.copy-btn:hover {
+  background-color: #d0f0fd;
+}
+
+.edit-btn:hover {
+  background-color: #fdf1d0;
+}
+
+.delete-btn:hover {
+  background-color: #fde0e0;
+}
 
 /* 模态框样式 */
 .modal {
@@ -228,7 +247,8 @@ ul {
 }
 
 .modal-body {
-  padding: 20px;  /* 统一的内边距 */
+  padding: 20px;
+  /* 统一的内边距 */
   box-sizing: border-box;
 }
 
@@ -287,6 +307,7 @@ ul {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -316,7 +337,8 @@ ul {
   width: 100%;
   height: 40px;
   min-width: 240px;
-  padding: 6px 24px;  /* 减小内边距 */
+  padding: 6px 24px;
+  /* 减小内边距 */
   background-color: #4a90e2;
   color: white;
   border: none;
@@ -376,7 +398,8 @@ ul {
 }
 
 .confirm-modal .modal-footer button:last-child {
-  background-color: #e74c3c;  /* 删除按钮使用红色 */
+  background-color: #e74c3c;
+  /* 删除按钮使用红色 */
   border: none;
   color: white;
   padding: 8px 15px;
@@ -400,7 +423,7 @@ ul {
   font-size: 16px;
   z-index: 2000;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(74,144,226,0.18);
+  box-shadow: 0 4px 24px rgba(74, 144, 226, 0.18);
   opacity: 0.98;
   animation: toastFadeIn 0.3s, toastFadeOut 0.3s 7s;
   -webkit-animation: toastFadeIn 0.3s, toastFadeOut 0.3s 7s;
@@ -408,17 +431,33 @@ ul {
 }
 
 @keyframes toastFadeIn {
-  from { opacity: 0; transform: translate(-50%, -60%);}
-  to   { opacity: 0.98; transform: translate(-50%, -50%);}
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+
+  to {
+    opacity: 0.98;
+    transform: translate(-50%, -50%);
+  }
 }
+
 @keyframes toastFadeOut {
-  from { opacity: 0.98; transform: translate(-50%, -50%);}
-  to   { opacity: 0; transform: translate(-50%, -40%);}
+  from {
+    opacity: 0.98;
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
 }
 
 /* 自定义滚动条样式 */
 ::-webkit-scrollbar {
-  width: 6px;  /* 更细的滚动条 */
+  width: 6px;
+  /* 更细的滚动条 */
   height: 6px;
 }
 
@@ -437,18 +476,22 @@ ul {
 
 /* 文本区域滚动条样式 */
 textarea {
-  scrollbar-width: thin;  /* Firefox */
-  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;
+  /* Firefox */
 }
 
 /* 列表容器样式 */
-ul {
+ul#prompt-list {
   list-style: none;
   padding: 0;
   margin: 0;
   height: 360px;
-  flex: 1;         /* 列表占用剩余空间 */
-  overflow-y: auto;  /* 只在列表区域显示滚动条 */
+  flex: 1;
+  /* 列表占用剩余空间 */
+  overflow-y: auto;
+  /* 只在列表区域显示滚动条 */
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f5f5f5;
@@ -456,26 +499,33 @@ ul {
 
 /* 模态框内容滚动条 */
 .modal-content {
-  max-height: 90vh;  /* 限制最大高度 */
+  max-height: 90vh;
+  /* 限制最大高度 */
   overflow-y: auto;
-  scrollbar-width: thin;  /* Firefox */
-  scrollbar-color: #c1c1c1 #f5f5f5;  /* Firefox */
+  scrollbar-width: thin;
+  /* Firefox */
+  scrollbar-color: #c1c1c1 #f5f5f5;
+  /* Firefox */
 }
 
 /* 标题行样式 */
 .title-row {
   display: flex;
   align-items: center;
-  justify-content: center;  /* 改为居中对齐 */
-  position: relative;  /* 添加相对定位 */
+  justify-content: center;
+  /* 改为居中对齐 */
+  position: relative;
+  /* 添加相对定位 */
   padding: 0 10px;
   margin-bottom: 8px;
 }
 
 /* 调整 star 位置 */
 .github-star {
-  position: absolute;  /* 使用绝对定位 */
-  right: 10px;  /* 固定在右侧 */
+  position: absolute;
+  /* 使用绝对定位 */
+  right: 10px;
+  /* 固定在右侧 */
   font-size: 20px;
   color: #666;
   text-decoration: none;
@@ -500,7 +550,8 @@ ul {
 /* 拖动手柄样式 */
 .drag-handle {
   color: #ccc;
-  margin-right: 4px;  /* 减小与文字的间距 */
+  margin-right: 4px;
+  /* 减小与文字的间距 */
   font-size: 14px;
   cursor: move;
   user-select: none;
@@ -510,7 +561,9 @@ ul {
 }
 
 /* 移除不需要的标签页样式 */
-.tabs, .tab, .tab-content {
+.tabs,
+.tab,
+.tab-content {
   display: none;
 }
 
@@ -544,7 +597,8 @@ ul {
   display: block;
   margin-bottom: 8px;
   padding: 0 5px;
-  overflow: hidden; /* 清除浮动 */
+  overflow: hidden;
+  /* 清除浮动 */
 }
 
 .left-buttons {
@@ -604,7 +658,7 @@ ul {
   align-items: stretch;
   min-height: 200px;
   margin-top: 2px;
-  box-shadow: 0 2px 8px rgba(74,144,226,0.07);
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.07);
   border: 1.5px solid #e3eaf3;
   box-sizing: border-box;
 }
@@ -673,4 +727,3 @@ ul {
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
 }
-
