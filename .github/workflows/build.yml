@@ -56,16 +56,27 @@ jobs:
     - name: Build Chromium-based Extension
       run: |
         mkdir -p dist/chrome/icons
-        cp manifest.json popup.html popup.js background.js content.js styles.css dist/chrome/
+        # 使用 iconv 确保文件是 UTF-8 编码
+        iconv -f UTF-8 -t UTF-8 styles.css > dist/chrome/styles.css
+        # 复制其他文件
+        cp manifest.json popup.html popup.js background.js content.js dist/chrome/
         cp icons/icon{16,48,128}.png dist/chrome/icons/
+        # 验证文件编码
+        file -i dist/chrome/styles.css
+        # 打包
         cd dist/chrome
         zip -r ../chromium-${{ steps.get_version.outputs.CLEAN_VERSION }}.zip *
         
     - name: Build Firefox Extension
       run: |
         mkdir -p dist/firefox/icons
-        cp manifest.json popup.html popup.js background.js content.js styles.css dist/firefox/
+        # 使用 iconv 确保文件是 UTF-8 编码
+        iconv -f UTF-8 -t UTF-8 styles.css > dist/firefox/styles.css
+        # 复制其他文件
+        cp manifest.json popup.html popup.js background.js content.js dist/firefox/
         cp icons/icon{16,48,128}.png dist/firefox/icons/
+        # 验证文件编码
+        file -i dist/firefox/styles.css
         cd dist/firefox
         jq '.browser_specific_settings = {"gecko": {"id": "easy-prompt@shalom-lab.com"}}' manifest.json > manifest.tmp
         mv manifest.tmp manifest.json

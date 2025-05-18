@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* 通用样式 */
 body {
   font-family: 'Arial', sans-serif;
@@ -489,9 +491,7 @@ ul#prompt-list {
   margin: 0;
   height: 360px;
   flex: 1;
-  /* 列表占用剩余空间 */
   overflow-y: auto;
-  /* 只在列表区域显示滚动条 */
   overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: #c1c1c1 #f5f5f5;
