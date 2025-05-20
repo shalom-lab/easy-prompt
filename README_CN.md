@@ -21,6 +21,17 @@
 > 💡 **寻找优质提示词？**  
 > 访问 [Awesome Prompt 提示词市场](https://shalom-lab.github.io/awesome-prompt/) 发现、分享和使用来自社区的精选提示词！
 
+## 💻️ 用户界面
+
+### 保存提示词
+![Save Prompts](images/save-prompt.gif)
+
+### 插入提示词
+![Insert Prompts](images/insert-prompt.gif)
+
+### 管理提示词
+![Manage Prompts](images/manage-prompt.gif)
+
 ## ✨ 功能特点
 
 ### 🚀 多平台支持

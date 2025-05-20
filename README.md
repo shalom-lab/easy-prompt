@@ -21,6 +21,19 @@ A powerful browser extension that helps you save and quickly reuse prompts acros
 > 💡 **Looking for amazing prompts?**  
 > Visit our [Awesome Prompt Market](https://shalom-lab.github.io/awesome-prompt/) to discover, share and use curated prompts from the community!
 
+![Easy prompt](images/promotional_tile_large.png)
+
+## 💻️ UI
+
+### Save Prompts
+![Save Prompts](images/save-prompt.gif)
+
+### Insert Prompts
+![Insert Prompts](images/insert-prompt.gif)
+
+### Manage Prompts
+![Manage Prompts](images/manage-prompt.gif)
+
 ## ✨ Features
 
 ### 🚀 Multi-Platform Support
