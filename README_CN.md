@@ -18,6 +18,8 @@
 
 </div>
 
+![Easy prompt](images/promotional_tile_large.png)
+
 > 💡 **寻找优质提示词？**  
 > 访问 [Awesome Prompt 提示词市场](https://shalom-lab.github.io/awesome-prompt/) 发现、分享和使用来自社区的精选提示词！
 
